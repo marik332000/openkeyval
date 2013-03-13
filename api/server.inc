@@ -175,6 +175,7 @@
     public static function HandleOPTIONS() {
       header("HTTP/1.0 200 OK");
       header("Allow: OPTIONS,GET,POST");
+      header("Access-Control-Allow-Origin: *");
       exit;
     }
 
@@ -243,6 +244,7 @@
       $http_message = $http_status_messages[$http_code];
       header("HTTP/1.0 {$http_code} {$http_message}");
       header("Content-Type: {$content_type}");
+      header("Access-Control-Allow-Origin: *");
       if(!is_string($body)) {
         $body['documentation_url'] = 'http://openkeyval.org/';
         $body = json_encode($body);
